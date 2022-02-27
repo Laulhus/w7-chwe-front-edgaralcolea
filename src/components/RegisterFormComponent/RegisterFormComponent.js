@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import FormContainer from "./FormContainer.style";
 
 const RegisterFormComponent = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const RegisterFormComponent = () => {
     formData.city !== "";
 
   return (
-    <form
+    <FormContainer
       className="form-container"
       onSubmit={handleSubmit}
       autoComplete="off"
@@ -118,13 +119,11 @@ const RegisterFormComponent = () => {
             onChange={handleChange}
           />
         </li>
-        <li>
-          <button type="submit" disabled={!isFilled}>
-            Register
-          </button>
-        </li>
       </ul>
-    </form>
+      <button type="submit" disabled={!isFilled}>
+        Register
+      </button>
+    </FormContainer>
   );
 };
 
