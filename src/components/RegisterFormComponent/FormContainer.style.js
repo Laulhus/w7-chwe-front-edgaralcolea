@@ -7,6 +7,7 @@ const FormContainer = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.5);
   h1 {
     text-align: center;
     color: black;
