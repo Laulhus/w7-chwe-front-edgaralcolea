@@ -2,7 +2,7 @@ import RegisterFormComponent from "./components/RegisterFormComponent/RegisterFo
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <RegisterFormComponent />
     </div>
   );
