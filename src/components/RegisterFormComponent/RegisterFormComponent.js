@@ -8,7 +8,16 @@ const RegisterFormComponent = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(createUserThunk(formData));
+    const userData = new FormData();
+    userData.append("picture", formData.picture);
+    userData.append("userName", formData.userName);
+    userData.append("password", formData.password);
+    userData.append("name", formData.name);
+    userData.append("lastName", formData.lastName);
+    userData.append("age", formData.age);
+    userData.append("city", formData.city);
+    dispatch(createUserThunk(userData));
+    resetForm();
   };
   const handleChange = (event) => {
     setFormData({
@@ -27,6 +36,10 @@ const RegisterFormComponent = () => {
     age: null,
     city: "",
     profile: null,
+  };
+
+  const resetForm = () => {
+    setFormData(blankForm);
   };
 
   const [formData, setFormData] = useState(blankForm);
