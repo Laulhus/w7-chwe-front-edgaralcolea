@@ -11,7 +11,13 @@ const RegisterFormComponent = () => {
     dispatch(createUserThunk(formData));
   };
   const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setFormData({
+      ...formData,
+      [event.target.name]:
+        event.target.type === "file"
+          ? event.target.files[0]
+          : event.target.value,
+    });
   };
   const blankForm = {
     userName: "",
