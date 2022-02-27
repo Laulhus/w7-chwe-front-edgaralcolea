@@ -5,7 +5,7 @@ const createUserThunk = (user) => async (dispatch) => {
   const response = await fetch(`${apiUrl}users/register`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/form-data",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(user),
   });
@@ -15,4 +15,4 @@ const createUserThunk = (user) => async (dispatch) => {
   }
 };
 
-export default createUserAction;
+export default createUserThunk;

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import createUserThunk from "../../redux/thunks/userThunks";
 import FormContainer from "./FormContainer.style";
 
 const RegisterFormComponent = () => {
@@ -7,6 +8,7 @@ const RegisterFormComponent = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(createUserThunk(formData));
   };
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -59,7 +61,7 @@ const RegisterFormComponent = () => {
             Password:
           </label>
           <input
-            type="text"
+            type="password"
             id="password"
             name="password"
             onChange={handleChange}
