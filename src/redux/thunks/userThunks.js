@@ -5,9 +5,9 @@ const createUserThunk = (user) => async (dispatch) => {
   const response = await fetch(`${apiUrl}users/register`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "multipart/form-data",
     },
-    body: JSON.stringify(user),
+    body: user,
   });
   if (response.ok) {
     const newUser = await response.json();
