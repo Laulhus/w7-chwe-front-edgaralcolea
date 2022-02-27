@@ -1,4 +1,4 @@
-import { Navigate, Route, Router, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import RegisterPage from "./pages/RegisterPage";
 
 function App() {
