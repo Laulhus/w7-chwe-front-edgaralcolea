@@ -1,12 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import FormContainer from "./RegisterFormComponent/FormContainer.style";
 
 const LoginFormComponent = () => {
-  const dispatch = useDispatch();
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(createUserThunk(userData));
+
     resetForm();
   };
   const handleChange = (event) => {
@@ -51,7 +50,7 @@ const LoginFormComponent = () => {
     >
       <ul>
         <li>
-          <h1 className="title">Create your profile!</h1>
+          <h1 className="title">Sign in!</h1>
         </li>
         <li>
           <label htmlFor="userName" title="userName">
@@ -79,8 +78,11 @@ const LoginFormComponent = () => {
         </li>
       </ul>
       <button type="submit" disabled={!isFilled}>
-        Register
+        Login
       </button>
+      <p className="link">
+        Don't have an account?<Link to={"/register"}> Register here</Link>
+      </p>
     </FormContainer>
   );
 };

@@ -1,12 +1,10 @@
 import createUserAction from "../actions/actionCreators";
 
 const createUserThunk = (user) => async (dispatch) => {
+  debugger;
   const apiUrl = process.env.REACT_APP_API_URL;
   const response = await fetch(`${apiUrl}users/register`, {
     method: "POST",
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
     body: user,
   });
   if (response.ok) {
