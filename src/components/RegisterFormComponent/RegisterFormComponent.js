@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import createUserThunk from "../../redux/thunks/userThunks";
 import FormContainer from "./FormContainer.style";
 
 const RegisterFormComponent = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,6 +20,7 @@ const RegisterFormComponent = () => {
     userData.append("city", formData.city);
     dispatch(createUserThunk(userData));
     resetForm();
+    navigate("/login");
   };
   const handleChange = (event) => {
     setFormData({
@@ -144,6 +147,9 @@ const RegisterFormComponent = () => {
       <button type="submit" disabled={!isFilled}>
         Register
       </button>
+      <p className="link">
+        Already have an account?<Link to={"/login"}> Login here</Link>
+      </p>
     </FormContainer>
   );
 };
