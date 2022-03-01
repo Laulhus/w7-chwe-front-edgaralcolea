@@ -1,7 +1,7 @@
-import createUserAction from "../actions/actionCreators";
+import { createUserAction, loginUserAction } from "../actions/actionCreators";
+import jwtDecode from "jwt-decode";
 
-const createUserThunk = (user) => async (dispatch) => {
-  debugger;
+export const createUserThunk = (user) => async (dispatch) => {
   const apiUrl = process.env.REACT_APP_API_URL;
   const response = await fetch(`${apiUrl}users/register`, {
     method: "POST",
@@ -13,4 +13,20 @@ const createUserThunk = (user) => async (dispatch) => {
   }
 };
 
-export default createUserThunk;
+export const loginUserThunk = (userData) => async (dispatch) => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+  const response = await fetch(`${apiUrl}users/login`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify(userData),
+  });
+  if (response.ok) {
+    debugger;
+    const { token } = await response.json();
+    const { picture, userName, id } = jwtDecode(token);
+    localStorage.setItem("token", token);
+    dispatch(loginUserAction({ picture, userName, id, loggedIn: true }));
+  }
+};
