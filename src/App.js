@@ -2,7 +2,6 @@ import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import jwtDecode from "jwt-decode";
 import { loginUserAction } from "./redux/actions/actionCreators";
@@ -11,16 +10,14 @@ import MainPage from "./pages/MainPage";
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.loggedUser);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      const { name, userName, id } = jwtDecode(token);
-      dispatch(loginUserAction({ name, userName, id, loggedIn: true }));
-      navigate("/main");
+      const { picture, userName, id } = jwtDecode(token);
+      dispatch(loginUserAction({ picture, userName, id, loggedIn: true }));
     }
-  }, [dispatch]);
+  }, [dispatch, navigate]);
 
   return (
     <div className="container">

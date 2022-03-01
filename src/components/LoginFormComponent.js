@@ -1,13 +1,20 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { loginUserThunk } from "../redux/thunks/userThunks";
 import FormContainer from "./RegisterFormComponent/FormContainer.style";
 
 const LoginFormComponent = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    dispatch(loginUserThunk(formData));
     resetForm();
+    navigate("/main");
   };
+
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -17,14 +24,10 @@ const LoginFormComponent = () => {
           : event.target.value,
     });
   };
+
   const blankForm = {
     userName: "",
     password: "",
-    name: "",
-    lastName: "",
-    age: null,
-    city: "",
-    profile: null,
   };
 
   const resetForm = () => {
@@ -33,13 +36,7 @@ const LoginFormComponent = () => {
 
   const [formData, setFormData] = useState(blankForm);
 
-  const isFilled =
-    formData.userName !== "" &&
-    formData.password !== "" &&
-    formData.name !== "" &&
-    formData.lastName !== "" &&
-    formData.age !== null &&
-    formData.city !== "";
+  const isFilled = formData.userName !== "" && formData.password !== "";
 
   return (
     <FormContainer

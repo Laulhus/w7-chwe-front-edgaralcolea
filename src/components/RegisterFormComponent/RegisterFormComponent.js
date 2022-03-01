@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import createUserThunk from "../../redux/thunks/userThunks";
+import { createUserThunk } from "../../redux/thunks/userThunks";
+
 import FormContainer from "./FormContainer.style";
 
 const RegisterFormComponent = () => {

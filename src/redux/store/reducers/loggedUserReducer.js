@@ -6,7 +6,7 @@ const loggedUserReducer = (user = initialUserData, action = {}) => {
   let newUser;
   switch (action.type) {
     case actionTypes.loginUser:
-      newUser = { ...action.user };
+      newUser = { ...action.userData };
       break;
     default:
       newUser = { ...user };
