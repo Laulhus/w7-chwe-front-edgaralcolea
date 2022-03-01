@@ -17,6 +17,7 @@ function App() {
       const { picture, userName, id } = jwtDecode(token);
       dispatch(loginUserAction({ picture, userName, id, loggedIn: true }));
     }
+    navigate("/main");
   }, [dispatch, navigate]);
 
   return (
