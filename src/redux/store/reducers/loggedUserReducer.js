@@ -1,13 +1,15 @@
 import actionTypes from "../../actions/actionTypes";
 
-const loggedUserReducer = (user = {}, action = {}) => {
+const initialUserData = { name: "", username: "", id: null, loggedIn: false };
+
+const loggedUserReducer = (user = initialUserData, action = {}) => {
   let newUser;
   switch (action.type) {
     case actionTypes.loginUser:
-      newUser = [...user, action.user];
+      newUser = { ...action.user };
       break;
     default:
-      newUser = [...user];
+      newUser = { ...user };
   }
   return newUser;
 };
