@@ -1,8 +1,11 @@
 import actionTypes from "./actionTypes";
 
-const createUserAction = (user) => ({
+export const createUserAction = (user) => ({
   type: actionTypes.createUser,
   user,
 });
 
-export default createUserAction;
+export const loginUserAction = (userData) => ({
+  type: actionTypes.loginUser,
+  userData,
+});
